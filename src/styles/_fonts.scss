@@ -1,0 +1,99 @@
+// importing fonts
+@font-face {
+  font-family: "Mulish-Light";
+  src: url(../assets/fonts/Mulish-Light.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Mulish-Bold";
+  src: url(../assets/fonts/Mulish-Bold.ttf);
+  font-weight: 700;
+}
+
+// // font variables
+// $bold: "titillium-semi", "arial", "sans-serif";
+
+// $reg: "titillium-regular", "arial", "sans-serif";
+
+// // mobile fonts
+// @mixin page-header-mobile {
+//   font-size: 1.75rem;
+//   line-height: 2.25rem;
+//   font-family: $bold;
+// }
+// @mixin subheader-mobile {
+//   font-size: 1.25rem;
+//   line-height: 1.75em;
+//   font-family: $bold;
+// }
+// @mixin labels-buttons-mobile {
+//   font-size: 0.813rem;
+//   line-height: 1.25rem;
+//   font-family: $bold;
+// }
+// @mixin table-header-mobile {
+//   font-size: 0.688rem;
+//   line-height: 1.25rem;
+//   font-family: $reg;
+//   font-weight: 400;
+// }
+// @mixin body-large-mobile {
+//   font-size: 0.938rem;
+//   line-height: 1.625rem;
+//   font-family: $reg;
+//   font-weight: 400;
+// }
+// @mixin body-medium-mobile {
+//   font-size: 0.813rem;
+//   line-height: 1.25rem;
+//   font-weight: 400;
+//   font-family: $reg;
+// }
+// @mixin body-small-mobile {
+//   font-size: 0.688rem;
+//   line-height: 1rem;
+//   font-weight: 400;
+//   font-family: $reg;
+// }
+
+// //desktop fonts
+// @mixin page-header-desktop {
+//   font-size: 2rem;
+//   line-height: 2.5rem;
+//   font-family: $bold;
+// }
+// @mixin subheader-desktop {
+//   font-size: 1.5rem;
+//   line-height: 2rem;
+//   font-family: $bold;
+// }
+// @mixin labels-buttons-desktop {
+//   font-size: 0.875rem;
+//   line-height: 1.375rem;
+//   font-family: $bold;
+// }
+// @mixin table-header-desktop {
+//   font-size: 0.75rem;
+//   line-height: 1.125rem;
+//   font-weight: 400;
+//   font-family: $reg;
+// }
+// @mixin body-large-desktop {
+//   font-size: 1rem;
+//   line-height: 1.75rem;
+//   font-weight: 400;
+//   font-family: $reg;
+// }
+// @mixin body-medium-desktop {
+//   font-size: 0.875rem;
+//   line-height: 1.375rem;
+//   font-weight: 400;
+//   font-family: $reg;
+// }
+// @mixin body-small-desktop {
+//   font-size: 0.75rem;
+//   line-height: 1.125rem;
+//   font-weight: 400;
+//   font-family: $reg;
+// }

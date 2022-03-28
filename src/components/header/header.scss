@@ -1,0 +1,67 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.navigation  {
+    display: flex;
+    justify-content: space-between;
+    @include wrapper-mobile;
+    margin-top: 20px;
+
+    @include tablet {
+        @include wrapper-tablet;
+        margin-top: 20px;
+
+    }
+
+    @include desktop {
+        @include wrapper-desktop;
+        margin-top: 20px;
+
+    }
+
+}
+
+.nav__list {
+    display: flex;
+}
+
+.nav__item{
+    padding-right: 25px;
+    color: #2E07A3;
+    
+
+    &:hover {
+        color: #a678ff;
+        transition: color 0.5s ease;
+    }
+}
+.nav__logo {
+    font-size: 16px;
+
+    &:hover {
+        color: #a678ff;
+        transition: color 0.5s ease;
+        
+    }
+}
+
+.hero__header {
+    @include wrapper-mobile;
+    font-size: 60px;
+    color: #2E07A3;
+    margin: 0 40px;
+    font-weight: 400;
+    
+    @include tablet {
+        @include wrapper-tablet;
+
+    }
+
+    @include desktop {
+        @include wrapper-desktop;
+
+    }
+
+}
