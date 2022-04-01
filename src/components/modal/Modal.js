@@ -1,13 +1,14 @@
 function Modal({
-  toggleModal,
   handleSubmit,
   formValue,
-  moodValueChange,
+  handleMoodValueChange,
   handleMoodNotesChange,
+  handleCloseModal,
+  currectMood,
 }) {
   return (
     <div className="modal">
-      <div onClick={toggleModal} className="overlay"></div>
+      <div className="overlay"></div>
       <section className="modal-content">
         <h1>Select your mood for today</h1>
         <form onSubmit={handleSubmit} className="form">
@@ -17,9 +18,9 @@ function Modal({
               type="radio"
               name="mood"
               value="happy"
-              onChange={moodValueChange}
-              defaultChecked={formValue.mood}
-              checked={formValue.mood === "happy"}
+              onChange={handleMoodValueChange}
+              defaultChecked={currectMood}
+              checked={currectMood === "happy"}
             />{" "}
             Happy{" "}
             <input
@@ -27,8 +28,8 @@ function Modal({
               type="radio"
               name="mood"
               value="sad"
-              onChange={moodValueChange}
-              checked={formValue.mood === "sad"}
+              onChange={handleMoodValueChange}
+              checked={currectMood === "sad"}
             />{" "}
             Sad{" "}
             <input
@@ -36,24 +37,24 @@ function Modal({
               type="radio"
               name="mood"
               value="frustrated"
-              onChange={moodValueChange}
-              checked={formValue.mood === "frustrated"}
+              onChange={handleMoodValueChange}
+              checked={currectMood === "frustrated"}
             />{" "}
             Frustrated{" "}
             <input
               type="radio"
               name="mood"
               value="tired"
-              onChange={moodValueChange}
-              checked={formValue.mood === "tired"}
+              onChange={handleMoodValueChange}
+              checked={currectMood === "tired"}
             />{" "}
             Tired{" "}
             <input
               type="radio"
               name="mood"
               value="drained"
-              onChangeCapture={moodValueChange}
-              checked={formValue.mood === "drained"}
+              onChangeCapture={handleMoodValueChange}
+              checked={currectMood === "drained"}
             />{" "}
             Drained{" "}
           </div>
@@ -68,7 +69,7 @@ function Modal({
           </button>
         </form>
       </section>
-      <button className="close-modal" onClick={toggleModal}>
+      <button className="close-modal" onClick={handleCloseModal}>
         Close
       </button>
     </div>

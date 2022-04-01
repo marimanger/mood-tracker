@@ -10,39 +10,59 @@ import "../trackMood/trackMood.scss";
 import ShowData from "../../components/showdata/ShowData";
 
 function TrackMood() {
-  const [value, onChange] = useState(new Date());
+  const [value] = useState(new Date());
   const [modal, setModal] = useState(false);
   const [moodItemPresent, setMoodItemPresent] = useState(false);
+  const [moodS, setMoodS] = useState(null);
+  const [notes, setNotes] = useState(null);
 
   const [formValue, setformValue] = React.useState({
-    moodName: "",
+    moodName: "happy",
     notes: "",
     date: "",
   });
 
+  const handleCloseModal = (e) => {
+    setModal(false);
+  };
+
   //Modal window for form
-  const toggleModal = async (e) => {
-    console.log("Cheking event on click", e);
-    await getExistingMoodForTheDate(moment(e).format("DD-MM-YYYY"));
-    setModal((modal) => !modal);
-    console.log(`Is Item Present ${moodItemPresent}`);
+  const toggleModal = (event) => {
+    console.log("Cheking event on click", event);
+    const currentDate = moment(event).format("DD-MM-YYYY");
+    if (checkIfUserMoodExists(currentDate)) {
+      setMoodItemPresent(true);
+      setModal(true);
+    } else {
+      setModal(true);
+      setMoodItemPresent(false);
+      setformValue({
+        moodName: formValue.moodName,
+        notes: formValue.notes,
+        date: currentDate,
+      });
+    }
   };
 
   const moodValueChange = (event) => {
-    event.preventDefault();
-    console.log(`Current mood is: ${formValue.mood}`);
-    setformValue({ mood: event.target.value, notes: formValue.notes });
-    console.log(`Updated mood is: ${formValue.mood}`);
+    console.log(`Current mood is: ${formValue.moodName}`);
+    setformValue({
+      moodName: event.target.value,
+      notes: formValue.notes,
+      date: formValue.date,
+    });
+
+    console.log(`Updated mood is: ${formValue.moodName}`);
   };
 
   // POST DATA/////////////
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const request = {
       moodName: formValue.moodName,
       note: formValue.notes,
-      date: moment(value).format("DD-MM-YYYY"),
+      date: formValue.date,
     };
     console.info(`Request data is ${JSON.stringify(request)}`);
     try {
@@ -51,45 +71,37 @@ function TrackMood() {
         request
       );
       console.log(`Response from server: ${JSON.stringify(res)}`);
-      setformValue({
-        mood: res.data.moodName,
-        notes: res.data.notes,
-        date: res.data.value,
-      });
+      getMoodData();
     } catch (error) {
       console.error(error);
     }
   };
+  //RADIO BUTTONS //////
 
   const handleMoodNotesChange = (event) => {
+    event.preventDefault();
     console.info(`Currect form state is ${JSON.stringify(formValue)}`);
-    setformValue({ mood: formValue.mood, notes: event.target.value });
+    setformValue({
+      moodName: formValue.moodName,
+      notes: event.target.value,
+      date: formValue.date,
+    });
   };
 
   //GET DATA BY DATE ////////////////////
 
-  const getExistingMoodForTheDate = async (date) => {
-    try {
-      console.info(`Requesting remote server for the ${date}`);
-      const existingSubmittedMood = await axios.get(
-        `http://localhost:8080/mood-user?userId=${123456}&date=${date}`
-      );
-      if (existingSubmittedMood.status === 404) {
-        console.log(`No data received...`);
-        setMoodItemPresent(false);
-        alert("!!!");
-      } else {
-        console.log(
-          `There's existing user mood for this date ${JSON.stringify(
-            existingSubmittedMood.data
-          )}`
-        );
-        setMoodItemPresent(true);
-      }
-    } catch (error) {
-      console.error(error);
+  const checkIfUserMoodExists = (userDate) => {
+    const userMood = moodlist.find((f) => f.date === userDate);
+    if (userMood !== undefined) {
+      setMoodS(userMood.moodName);
+      setNotes(userMood.note);
+      return true;
+    } else {
+      return false;
     }
   };
+
+  //GET ALL MOODS ///////////////////////////
 
   const [moodlist, setMoodlist] = React.useState([]);
 
@@ -117,17 +129,20 @@ function TrackMood() {
       .map((e) => "\n" + e.moodName);
   }
 
-  //modal popup logic
+  //MODAL POP UP LOGIC ///////////////////////
 
   let modalPopup = null;
-  if (!moodItemPresent) {
+
+  if (moodItemPresent === false && modal === true) {
     modalPopup = (
       <Modal
         toggleModal={toggleModal}
         handleSubmit={handleSubmit}
         formValue={formValue}
-        moodValueChange={moodValueChange}
+        handleMoodValueChange={moodValueChange}
         handleMoodNotesChange={handleMoodNotesChange}
+        handleCloseModal={handleCloseModal}
+        currectMood={formValue.moodName}
       />
     );
   } else {
@@ -136,9 +151,11 @@ function TrackMood() {
         toggleModal={toggleModal}
         handleSubmit={handleSubmit}
         formValue={formValue}
-        moodValueChange={moodValueChange}
+        handleMoodValueChange={moodValueChange}
         handleMoodNotesChange={handleMoodNotesChange}
-        moodSelection={moodlist.date}
+        handleCloseModal={handleCloseModal}
+        notes={notes}
+        moodSelection={moodS}
       />
     );
   }
@@ -150,7 +167,6 @@ function TrackMood() {
       I am Track Mood Page
       <Calendar
         onClickDay={toggleModal}
-        onChange={onChange}
         value={value}
         className="react-calendar"
         tileContent={tileContent}
