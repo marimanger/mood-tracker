@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
+import Modal from "../../components/modal/Modal";
 import axios from "axios";
 import moment from "moment";
 
 import "react-calendar/dist/Calendar.css";
 import "../about/about.scss";
 import "../trackMood/trackMood.scss";
+import ShowData from "../../components/showdata/ShowData";
 
 function TrackMood() {
   const [value, onChange] = useState(new Date());
@@ -19,9 +21,10 @@ function TrackMood() {
   });
 
   //Modal window for form
-  const toggleModal = async () => {
-    await getExistingMoodForTheDate(moment(value).format("DD-MM-YYYY"));
-    setModal(!modal);
+  const toggleModal = async (e) => {
+    console.log("Cheking event on click", e);
+    await getExistingMoodForTheDate(moment(e).format("DD-MM-YYYY"));
+    setModal((modal) => !modal);
     console.log(`Is Item Present ${moodItemPresent}`);
   };
 
@@ -35,9 +38,9 @@ function TrackMood() {
   // POST DATA/////////////
 
   const handleSubmit = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const request = {
-      moodName: formValue.mood,
+      moodName: formValue.moodName,
       note: formValue.notes,
       date: moment(value).format("DD-MM-YYYY"),
     };
@@ -72,14 +75,16 @@ function TrackMood() {
         `http://localhost:8080/mood-user?userId=${123456}&date=${date}`
       );
       if (existingSubmittedMood.status === 404) {
-        console.log(`No data received`);
+        console.log(`No data received...`);
+        setMoodItemPresent(false);
+        alert("!!!");
       } else {
         console.log(
           `There's existing user mood for this date ${JSON.stringify(
             existingSubmittedMood.data
           )}`
         );
-        setMoodItemPresent(!moodItemPresent);
+        setMoodItemPresent(true);
       }
     } catch (error) {
       console.error(error);
@@ -112,6 +117,34 @@ function TrackMood() {
       .map((e) => "\n" + e.moodName);
   }
 
+  //modal popup logic
+
+  let modalPopup = null;
+  if (!moodItemPresent) {
+    modalPopup = (
+      <Modal
+        toggleModal={toggleModal}
+        handleSubmit={handleSubmit}
+        formValue={formValue}
+        moodValueChange={moodValueChange}
+        handleMoodNotesChange={handleMoodNotesChange}
+      />
+    );
+  } else {
+    modalPopup = (
+      <ShowData
+        toggleModal={toggleModal}
+        handleSubmit={handleSubmit}
+        formValue={formValue}
+        moodValueChange={moodValueChange}
+        handleMoodNotesChange={handleMoodNotesChange}
+        moodSelection={moodlist.date}
+      />
+    );
+  }
+
+  //Modal
+
   return (
     <>
       I am Track Mood Page
@@ -123,74 +156,7 @@ function TrackMood() {
         tileContent={tileContent}
         tileClassName={tileContent}
       />
-      {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <section className="modal-content">
-            <h1>Select your mood for today</h1>
-            <form onSubmit={handleSubmit} className="form">
-              <div>
-                <input
-                  //   className="happy"
-                  type="radio"
-                  name="mood"
-                  value="happy"
-                  onChange={moodValueChange}
-                  defaultChecked={formValue.mood}
-                  checked={formValue.mood === "happy"}
-                />{" "}
-                Happy{" "}
-                <input
-                  //   className="sad"
-                  type="radio"
-                  name="mood"
-                  value="sad"
-                  onChange={moodValueChange}
-                  checked={formValue.mood === "sad"}
-                />{" "}
-                Sad{" "}
-                <input
-                  //   className="frustrated"
-                  type="radio"
-                  name="mood"
-                  value="frustrated"
-                  onChange={moodValueChange}
-                  checked={formValue.mood === "frustrated"}
-                />{" "}
-                Frustrated{" "}
-                <input
-                  type="radio"
-                  name="mood"
-                  value="tired"
-                  onChange={moodValueChange}
-                  checked={formValue.mood === "tired"}
-                />{" "}
-                Tired{" "}
-                <input
-                  type="radio"
-                  name="mood"
-                  value="drained"
-                  onChangeCapture={moodValueChange}
-                  checked={formValue.mood === "drained"}
-                />{" "}
-                Drained{" "}
-              </div>
-              <textarea
-                onChange={handleMoodNotesChange}
-                value={formValue.note}
-                name="notes"
-                placeholder="my thoughts for today"
-              ></textarea>
-              <button type="submit" className="submit__btn">
-                done
-              </button>
-            </form>
-          </section>
-          <button className="close-modal" onClick={toggleModal}>
-            Close
-          </button>
-        </div>
-      )}
+      {modal && modalPopup}
     </>
   );
 }
