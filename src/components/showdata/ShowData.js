@@ -1,14 +1,12 @@
 function ShowData({
-  toggleModal,
   handleSubmit,
   formValue,
-  handleMoodNotesChange,
+  moodEditNoteChange,
+  moodEditValueChange,
   moodSelection,
   notes,
-  moodValueChange,
-  moodvalue,
-  radio,
   handleCloseModal,
+  currectMood,
 }) {
   return (
     <div className="modal">
@@ -19,52 +17,49 @@ function ShowData({
         <form onSubmit={handleSubmit} className="form">
           <div>
             <input
-              //   className="happy"
               type="radio"
               name="mood"
               value="happy"
-              onChange={moodValueChange}
-              defaultChecked={moodvalue}
-              checked={radio}
+              onChange={moodEditValueChange}
+              defaultChecked={currectMood}
+              checked={currectMood === "happy"}
             />{" "}
             Happy{" "}
             <input
-              //   className="sad"
               type="radio"
               name="mood"
               value="sad"
-              onChange={moodValueChange}
-              checked={formValue.mood === "sad"}
+              onChange={moodEditValueChange}
+              checked={currectMood === "sad"}
             />{" "}
             Sad{" "}
             <input
-              //   className="frustrated"
               type="radio"
               name="mood"
               value="frustrated"
-              onChange={moodValueChange}
-              checked={formValue.mood === "frustrated"}
+              onChange={moodEditValueChange}
+              checked={currectMood === "frustrated"}
             />{" "}
             Frustrated{" "}
             <input
               type="radio"
               name="mood"
               value="tired"
-              onChange={moodValueChange}
-              checked={formValue.mood === "tired"}
+              onChange={moodEditValueChange}
+              checked={currectMood === "tired"}
             />{" "}
             Tired{" "}
             <input
               type="radio"
               name="mood"
               value="drained"
-              onChangeCapture={moodValueChange}
-              checked={formValue.mood === "drained"}
+              onChange={moodEditValueChange}
+              checked={currectMood === "drained"}
             />{" "}
             Drained{" "}
           </div>
           <textarea
-            onChange={handleMoodNotesChange}
+            onChange={moodEditNoteChange}
             value={formValue.note}
             name="notes"
             placeholder="my thoughts for today"
