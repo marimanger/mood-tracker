@@ -13,10 +13,15 @@ function TrackMood() {
   const [value] = useState(new Date());
   const [modal, setModal] = useState(false);
   const [moodItemPresent, setMoodItemPresent] = useState(false);
-  const [moodS, setMoodS] = useState(null);
-  const [notes, setNotes] = useState(null);
 
-  const [formValue, setformValue] = React.useState({
+  const [showForm, setEditForm] = useState({
+      id: '',
+      moodName: '',
+      note: '',
+    }
+  );
+
+  const [formValue, setFormValue] = React.useState({
     moodName: "happy",
     notes: "",
     date: "",
@@ -26,9 +31,10 @@ function TrackMood() {
     setModal(false);
   };
 
-  //Modal window for form
+  //Modal window for form//////////////////
+
   const toggleModal = (event) => {
-    console.log("Cheking event on click", event);
+    // console.log("Cheking event on click", event);
     const currentDate = moment(event).format("DD-MM-YYYY");
     if (checkIfUserMoodExists(currentDate)) {
       setMoodItemPresent(true);
@@ -36,7 +42,7 @@ function TrackMood() {
     } else {
       setModal(true);
       setMoodItemPresent(false);
-      setformValue({
+      setFormValue({
         moodName: formValue.moodName,
         notes: formValue.notes,
         date: currentDate,
@@ -46,13 +52,29 @@ function TrackMood() {
 
   const moodValueChange = (event) => {
     console.log(`Current mood is: ${formValue.moodName}`);
-    setformValue({
+    setFormValue({
       moodName: event.target.value,
       notes: formValue.notes,
       date: formValue.date,
     });
+  };
 
-    console.log(`Updated mood is: ${formValue.moodName}`);
+  const moodEditValueChange = (event) => {
+    console.log(`Edit mood is: ${event.target.value}`);
+    setEditForm({
+      moodName: event.target.value,
+      note: showForm.note,
+      id: showForm.id,
+    })
+  };
+
+  const moodEditNoteChange = (event) => {
+    console.log(`Edit mood note is: ${event.target.value}, show form is ${JSON.stringify(showForm)}`);
+    setEditForm({
+      moodName: showForm.moodName,
+      note: event.target.value,
+      id: showForm.id,
+    })
   };
 
   // POST DATA/////////////
@@ -64,10 +86,31 @@ function TrackMood() {
       note: formValue.notes,
       date: formValue.date,
     };
-    console.info(`Request data is ${JSON.stringify(request)}`);
+    // console.info(`Request data is ${JSON.stringify(request)}`);
     try {
       const res = await axios.post(
         `http://localhost:8080/mood-user?userId=${123456}`,
+        request
+      );
+      // console.log(`Response from server: ${JSON.stringify(res)}`);
+      getMoodData();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // EDIT DATA/////////////
+
+  const handleSubmitEditMood = async (event) => {
+    event.preventDefault();
+    const request = {
+      moodName: showForm.moodName,
+      note: showForm.note,
+    };
+    console.info(`Request data is ${JSON.stringify(request)}`);
+    try {
+      const res = await axios.put(
+        `http://localhost:8080/mood-user/${showForm.id}?userId=${123456}`,
         request
       );
       console.log(`Response from server: ${JSON.stringify(res)}`);
@@ -81,20 +124,21 @@ function TrackMood() {
   const handleMoodNotesChange = (event) => {
     event.preventDefault();
     console.info(`Currect form state is ${JSON.stringify(formValue)}`);
-    setformValue({
+    setFormValue({
       moodName: formValue.moodName,
       notes: event.target.value,
       date: formValue.date,
     });
   };
 
-  //GET DATA BY DATE ////////////////////
-
   const checkIfUserMoodExists = (userDate) => {
     const userMood = moodlist.find((f) => f.date === userDate);
     if (userMood !== undefined) {
-      setMoodS(userMood.moodName);
-      setNotes(userMood.note);
+      setEditForm({
+        moodName: userMood.moodName,
+        note: userMood.note,
+        id: userMood.id,
+      })
       return true;
     } else {
       return false;
@@ -104,7 +148,6 @@ function TrackMood() {
   //GET ALL MOODS ///////////////////////////
 
   const [moodlist, setMoodlist] = React.useState([]);
-
   const GET_MOODS = `http://localhost:8080/mood-user?userId=${123456}`;
   const getMoodData = async () => {
     try {
@@ -149,13 +192,14 @@ function TrackMood() {
     modalPopup = (
       <ShowData
         toggleModal={toggleModal}
-        handleSubmit={handleSubmit}
+        handleSubmit={handleSubmitEditMood}
         formValue={formValue}
-        handleMoodValueChange={moodValueChange}
-        handleMoodNotesChange={handleMoodNotesChange}
+        moodEditNoteChange={moodEditNoteChange}
+        moodEditValueChange={moodEditValueChange}
         handleCloseModal={handleCloseModal}
-        notes={notes}
-        moodSelection={moodS}
+        notes={showForm.note}
+        moodSelection={showForm.moodName}
+        currectMood={showForm.moodName}
       />
     );
   }
@@ -169,7 +213,7 @@ function TrackMood() {
         onClickDay={toggleModal}
         value={value}
         className="react-calendar"
-        tileContent={tileContent}
+        // tileContent={tileContent}
         tileClassName={tileContent}
       />
       {modal && modalPopup}

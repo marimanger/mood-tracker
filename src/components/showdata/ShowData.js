@@ -1,12 +1,10 @@
 function ShowData({
   handleSubmit,
   formValue,
-  handleMoodNotesChange,
+  moodEditNoteChange,
+  moodEditValueChange,
   moodSelection,
   notes,
-  moodValueChange,
-  moodvalue,
-  radio,
   handleCloseModal,
   currectMood,
 }) {
@@ -22,16 +20,16 @@ function ShowData({
               type="radio"
               name="mood"
               value="happy"
-              onChange={moodValueChange}
-              defaultChecked={currectMood === "happy"}
-              checked={radio}
+              onChange={moodEditValueChange}
+              defaultChecked={currectMood}
+              checked={currectMood === "happy"}
             />{" "}
             Happy{" "}
             <input
               type="radio"
               name="mood"
               value="sad"
-              onChange={moodValueChange}
+              onChange={moodEditValueChange}
               checked={currectMood === "sad"}
             />{" "}
             Sad{" "}
@@ -39,7 +37,7 @@ function ShowData({
               type="radio"
               name="mood"
               value="frustrated"
-              onChange={moodValueChange}
+              onChange={moodEditValueChange}
               checked={currectMood === "frustrated"}
             />{" "}
             Frustrated{" "}
@@ -47,7 +45,7 @@ function ShowData({
               type="radio"
               name="mood"
               value="tired"
-              onChange={moodValueChange}
+              onChange={moodEditValueChange}
               checked={currectMood === "tired"}
             />{" "}
             Tired{" "}
@@ -55,13 +53,13 @@ function ShowData({
               type="radio"
               name="mood"
               value="drained"
-              onChange={moodValueChange}
+              onChange={moodEditValueChange}
               checked={currectMood === "drained"}
             />{" "}
             Drained{" "}
           </div>
           <textarea
-            onChange={handleMoodNotesChange}
+            onChange={moodEditNoteChange}
             value={formValue.note}
             name="notes"
             placeholder="my thoughts for today"
