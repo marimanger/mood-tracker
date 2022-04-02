@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import Modal from "../../components/modal/Modal";
+import Chart from "../../components/chart/Chart";
 import axios from "axios";
 import moment from "moment";
 
@@ -15,11 +16,10 @@ function TrackMood() {
   const [moodItemPresent, setMoodItemPresent] = useState(false);
 
   const [showForm, setEditForm] = useState({
-      id: '',
-      moodName: '',
-      note: '',
-    }
-  );
+    id: "",
+    moodName: "",
+    note: "",
+  });
 
   const [formValue, setFormValue] = React.useState({
     moodName: "happy",
@@ -65,16 +65,20 @@ function TrackMood() {
       moodName: event.target.value,
       note: showForm.note,
       id: showForm.id,
-    })
+    });
   };
 
   const moodEditNoteChange = (event) => {
-    console.log(`Edit mood note is: ${event.target.value}, show form is ${JSON.stringify(showForm)}`);
+    console.log(
+      `Edit mood note is: ${event.target.value}, show form is ${JSON.stringify(
+        showForm
+      )}`
+    );
     setEditForm({
       moodName: showForm.moodName,
       note: event.target.value,
       id: showForm.id,
-    })
+    });
   };
 
   // POST DATA/////////////
@@ -138,7 +142,7 @@ function TrackMood() {
         moodName: userMood.moodName,
         note: userMood.note,
         id: userMood.id,
-      })
+      });
       return true;
     } else {
       return false;
