@@ -3,7 +3,6 @@
 @use "./styles/breakpoints" as *;
 @use "./styles/mixins" as *;
 
-
 *,
 *::before,
 *::after {
@@ -13,37 +12,34 @@
 }
 
 html {
-    height: 100%;
-    
-  }
-  
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Avenir Next", "Arial", sans-serif;
-      font-weight: 400;
-      font-size: 0.9rem;
-      color: $brainflix-black;
-      background: rgb(238,174,202);
-      background: radial-gradient(circle, rgba(238,174,202,0.6307116596638656) 0%, rgba(148,187,233,0.6223082983193278) 100%);  
-  }
-  
-  a {
-      text-decoration: none;
-      color: black;
-    
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  
-  }
-  
-  h1, h2, h3, h4 {
-    font-style: normal;
-    
-  }
-  
-  
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Avenir Next", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: $brainflix-black;
+  background: #fffce3;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-style: normal;
+}

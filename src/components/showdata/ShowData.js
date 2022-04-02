@@ -1,5 +1,4 @@
 function ShowData({
-  toggleModal,
   handleSubmit,
   formValue,
   handleMoodNotesChange,
@@ -9,6 +8,7 @@ function ShowData({
   moodvalue,
   radio,
   handleCloseModal,
+  currectMood,
 }) {
   return (
     <div className="modal">
@@ -19,31 +19,28 @@ function ShowData({
         <form onSubmit={handleSubmit} className="form">
           <div>
             <input
-              //   className="happy"
               type="radio"
               name="mood"
               value="happy"
               onChange={moodValueChange}
-              defaultChecked={moodvalue}
+              defaultChecked={currectMood === "happy"}
               checked={radio}
             />{" "}
             Happy{" "}
             <input
-              //   className="sad"
               type="radio"
               name="mood"
               value="sad"
               onChange={moodValueChange}
-              checked={formValue.mood === "sad"}
+              checked={currectMood === "sad"}
             />{" "}
             Sad{" "}
             <input
-              //   className="frustrated"
               type="radio"
               name="mood"
               value="frustrated"
               onChange={moodValueChange}
-              checked={formValue.mood === "frustrated"}
+              checked={currectMood === "frustrated"}
             />{" "}
             Frustrated{" "}
             <input
@@ -51,15 +48,15 @@ function ShowData({
               name="mood"
               value="tired"
               onChange={moodValueChange}
-              checked={formValue.mood === "tired"}
+              checked={currectMood === "tired"}
             />{" "}
             Tired{" "}
             <input
               type="radio"
               name="mood"
               value="drained"
-              onChangeCapture={moodValueChange}
-              checked={formValue.mood === "drained"}
+              onChange={moodValueChange}
+              checked={currectMood === "drained"}
             />{" "}
             Drained{" "}
           </div>
