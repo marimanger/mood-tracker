@@ -1,0 +1,125 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #ffffff;
+  padding: 36px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 336px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}
+
+.modal__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__title {
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-radio__wrapper {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.modal__notes {
+  overflow: hidden;
+  resize: none;
+  width: 100%;
+  font-family: inherit;
+}
+
+.input__radio {
+  position: relative;
+  appearance: none;
+  padding-left: 15px;
+  text-align: center;
+
+  &:nth-first-child() {
+    padding-left: 0;
+  }
+
+  &--sad::before {
+    content: "";
+    background-image: url("../../assets/images/drained.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -61px;
+    left: 3px;
+    width: 48px;
+    height: 48px;
+    // border: 1.5px solid red;
+    // border-radius: 50%;
+  }
+
+  &--happy::before {
+    content: "";
+    background-image: url("../../assets/images/drained.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -61px;
+    left: 3px;
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    // border: 1.5px solid red;
+    // border-radius: 50%;
+  }
+}
+
+.input__radio--sad:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/images/drained2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -61px;
+  left: 3px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}

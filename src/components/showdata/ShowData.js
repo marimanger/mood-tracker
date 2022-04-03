@@ -1,3 +1,5 @@
+import "../showdata/showdata.scss";
+
 function ShowData({
   handleSubmit,
   formValue,

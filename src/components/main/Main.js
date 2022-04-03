@@ -1,4 +1,4 @@
-import "../header/header.scss";
+import "../main/main.scss";
 import Hero from "../hero/Hero";
 
 function Main() {

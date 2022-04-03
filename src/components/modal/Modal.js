@@ -1,3 +1,5 @@
+import "../modal/modal.scss";
+
 function Modal({
   handleSubmit,
   formValue,
@@ -9,12 +11,12 @@ function Modal({
   return (
     <div className="modal">
       <div className="overlay"></div>
-      <section className="modal-content">
-        <h1>Select your mood for today</h1>
-        <form onSubmit={handleSubmit} className="form">
-          <div>
+      <section className="modal-content modal__container">
+        <h1 className="modal__title">What is your mood today?</h1>
+        <form className="form__modal" onSubmit={handleSubmit}>
+          <div className="form-radio__wrapper">
             <input
-              //   className="happy"
+              className=" input__radio input__radio--happy"
               type="radio"
               name="mood"
               value="happy"
@@ -24,7 +26,7 @@ function Modal({
             />{" "}
             Happy{" "}
             <input
-              //   className="sad"
+              className="input__radio input__radio--sad"
               type="radio"
               name="mood"
               value="sad"
@@ -33,7 +35,7 @@ function Modal({
             />{" "}
             Sad{" "}
             <input
-              //   className="frustrated"
+              className="input__radio input__radio--frustrated"
               type="radio"
               name="mood"
               value="frustrated"
@@ -42,6 +44,7 @@ function Modal({
             />{" "}
             Frustrated{" "}
             <input
+              className=" input__radio input__radio--tired"
               type="radio"
               name="mood"
               value="tired"
@@ -50,6 +53,7 @@ function Modal({
             />{" "}
             Tired{" "}
             <input
+              className="input__radio input__radio--drained"
               type="radio"
               name="mood"
               value="drained"
@@ -59,6 +63,7 @@ function Modal({
             Drained{" "}
           </div>
           <textarea
+            className="modal__notes"
             onChange={handleMoodNotesChange}
             value={formValue.note}
             name="notes"
