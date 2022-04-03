@@ -3,34 +3,81 @@
 @use "../../styles/fonts" as *;
 @use "../../styles/variables" as *;
 
+//HELLO SECTION
+
 .react-calendar {
-  width: 100vw;
+  width: 80vw;
   max-width: 100%;
-  background: none;
+  text-align: center;
   border: none;
+  background: none;
   font-family: "Avenir Next", "Arial", sans-serif;
   line-height: 1.125em;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  padding-bottom: 5px;
+  // background-color: white;
+}
+
+.reaact-calendar__navigation {
+  justify-content: center;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.75em;
+  text-decoration: none;
 }
 
 .display__none {
   display: none;
 }
 
+.calendar__container {
+  background: white;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  // border-top-right-radius: 30px;
+  border-top-left-radius: 30%;
+  // border-bottom-right-radius: 30%;
+
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+//BG Calendar Colour
 .sad {
-  background-color: red;
+  background-color: #fffce3;
 }
 
 .happy {
-  background-color: green;
+  background-color: #dafbd0;
 }
 
 .frustrated {
-  background-color: aquamarine;
+  background-color: #b2b2f8;
 }
 
 .tired {
-  background-color: peachpuff;
+  background-color: #fae0e4;
 }
+
 .drained {
   background-color: salmon;
+}
+
+//Calendar
+.react-calendar__month-view__days__day--weekend {
+  color: #131212;
+}
+
+.react-calendar__tile--active {
+  background: #cecece;
+  color: white;
+}
+
+.react-calendar__navigation__label {
+  flex-grow: 0;
 }

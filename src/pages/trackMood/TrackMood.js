@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import Modal from "../../components/modal/Modal";
-import Chart from "../../components/chart/Chart";
+import ZenQuote from "../../components/zenQuote/ZenQuote";
+import ShowData from "../../components/showdata/ShowData";
+import Hello from "../../components/hello/Hello";
 import axios from "axios";
 import moment from "moment";
 
 import "react-calendar/dist/Calendar.css";
 import "../about/about.scss";
 import "../trackMood/trackMood.scss";
-import ShowData from "../../components/showdata/ShowData";
 
 function TrackMood() {
   const [value] = useState(new Date());
@@ -212,14 +213,19 @@ function TrackMood() {
 
   return (
     <>
-      I am Track Mood Page
-      <Calendar
-        onClickDay={toggleModal}
-        value={value}
-        className="react-calendar"
-        // tileContent={tileContent}
-        tileClassName={tileContent}
-      />
+      <Hello />
+
+      <section className="calendar__container">
+        <Calendar
+          onClickDay={toggleModal}
+          value={value}
+          className="react-calendar"
+          // tileContent={tileContent}
+          tileClassName={tileContent}
+        />
+      </section>
+      <section className="chart__wrapper"></section>
+      <ZenQuote />
       {modal && modalPopup}
     </>
   );

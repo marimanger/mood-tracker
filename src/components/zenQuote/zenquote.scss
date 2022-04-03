@@ -1,0 +1,42 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.quote__wrapper {
+  margin: 20px auto;
+  max-width: 368px;
+}
+.quote__section {
+  @include wrapper-mobile;
+  margin: 30px 0;
+  background-color: white;
+  padding: 20px;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  //   box-shadow: #e0e21e40 0px 7px 29px 0px;
+}
+
+.quote__header {
+  text-align: center;
+  margin: 0 30px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.quote__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote__text {
+  font-size: 17px;
+  font-style: italic;
+  padding: 12px 0;
+  border-top: 2px solid #fffce3;
+}
+.quote__author {
+  text-align: left;
+  align-self: flex-end;
+  margin: 0 25px;
+}
