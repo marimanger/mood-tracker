@@ -1,0 +1,14 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.hello__section {
+  @include wrapper-mobile;
+  margin: 30px 0;
+}
+.hello-header__section {
+  text-align: center;
+  margin: 0 30px;
+  font-weight: 600;
+}
