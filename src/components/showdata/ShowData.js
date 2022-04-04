@@ -14,11 +14,17 @@ function ShowData({
     <div className="modal">
       <div className="overlay"></div>
       <section className="modal-content">
-        <h1>Your Mood Infromation for this day</h1>
-        <p> {`My mood selection ${moodSelection}`} </p>
+        <h1 className="header__show-content">
+          Your Mood Infromation for this day
+        </h1>
+        <p className="show-content__paragraph">
+          {" "}
+          {`My mood selection ${moodSelection}`}{" "}
+        </p>
         <form onSubmit={handleSubmit} className="form">
-          <div>
+          <div className="form-radio__wrapper showdata__wrapper">
             <input
+              className="input__radio input__radio--happy"
               type="radio"
               name="mood"
               value="happy"
@@ -28,6 +34,7 @@ function ShowData({
             />{" "}
             Happy{" "}
             <input
+              className="input__radio input__radio--sad"
               type="radio"
               name="mood"
               value="sad"
@@ -36,6 +43,7 @@ function ShowData({
             />{" "}
             Sad{" "}
             <input
+              className="input__radio input__radio--frustrated"
               type="radio"
               name="mood"
               value="frustrated"
@@ -44,6 +52,7 @@ function ShowData({
             />{" "}
             Frustrated{" "}
             <input
+              className=" input__radio input__radio--tired"
               type="radio"
               name="mood"
               value="tired"
@@ -52,6 +61,7 @@ function ShowData({
             />{" "}
             Tired{" "}
             <input
+              className="input__radio input__radio--drained"
               type="radio"
               name="mood"
               value="drained"
@@ -61,6 +71,7 @@ function ShowData({
             Drained{" "}
           </div>
           <textarea
+            className="modal__notes"
             onChange={moodEditNoteChange}
             value={formValue.note}
             name="notes"

@@ -1,4 +1,5 @@
 import "../hero/hero.scss";
+import { Link } from "react-router-dom";
 function Hero() {
   return (
     <div className="hero__container">
@@ -9,7 +10,9 @@ function Hero() {
           Keep a record of your mood at regular intervals with diary to keep
           track of your feelings and emotions
         </p>
-        <button className="button__hero">see more</button>
+        <Link to="/how-to-use">
+          <button className="button__hero">how to use</button>
+        </Link>
       </section>
     </div>
   );
