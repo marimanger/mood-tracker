@@ -10,7 +10,7 @@ function Header() {
         <ul className="nav__list">
           <li>
             <a className=" nav__item nav__track-mood" href="/">
-              about
+              how to use
             </a>
           </li>
           <li>

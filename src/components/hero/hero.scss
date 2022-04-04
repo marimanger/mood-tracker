@@ -13,8 +13,7 @@
   width: 100%;
   height: 500px;
   background-repeat: no-repeat;
-  background-size: 100% 475px;
-  background-position: -36% 7%;
+  background-position: 79% 7%;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -38,34 +37,86 @@
   text-align: center;
 }
 
+// .button__hero {
+//   padding: 8px 20px;
+//   width: 50%;
+//   font-size: 13px;
+//   text-decoration: none;
+//   margin-top: 20px;
+//   background-color: #def065;
+//   border-radius: 100px;
+//   box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
+//     rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
+//     rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
+//     rgba(44, 187, 99, 0.15) 0 16px 32px;
+//   color: rgb(0, 0, 0);
+//   cursor: pointer;
+//   display: inline-block;
+//   text-align: center;
+
+//   transition: all 250ms;
+//   border: 0;
+//   user-select: none;
+//   -webkit-user-select: none;
+//   touch-action: manipulation;
+
+//   &:hover {
+//     box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
+//       rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
+//       rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
+//       rgba(44, 187, 99, 0.25) 0 16px 32px;
+//     transform: scale(1.05) rotate(0deg);
+//   }
+// }
+
+/* CSS */
 .button__hero {
-  padding: 8px 20px;
-  width: 50%;
-  font-size: 13px;
-  text-decoration: none;
-  margin-top: 20px;
-  background-color: #def065;
-  border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
-    rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
-    rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
-    rgba(44, 187, 99, 0.15) 0 16px 32px;
-  color: rgb(0, 0, 0);
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
+  font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 5px 10px 0;
+  overflow: visible;
+  padding: 12px 40px;
   text-align: center;
-
-  transition: all 250ms;
-  border: 0;
+  text-transform: none;
+  touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
 
-  &:hover {
-    box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
-      rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
-      rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
-      rgba(44, 187, 99, 0.25) 0 16px 32px;
-    transform: scale(1.05) rotate(0deg);
+.button__hero:focus {
+  text-decoration: none;
+}
+
+.button__hero:hover {
+  text-decoration: none;
+}
+
+.button__hero:active {
+  box-shadow: rgba(0, 0, 0, 0.125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.button__hero:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button__hero {
+    padding: 12px 50px;
   }
 }
