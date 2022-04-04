@@ -62,15 +62,19 @@ function Modal({
             />{" "}
             Drained{" "}
           </div>
+          <h2 className="modal__title modal__title--second">
+            Add some notes<br></br>why do you feel this way?
+          </h2>
+
           <textarea
             className="modal__notes"
             onChange={handleMoodNotesChange}
             value={formValue.note}
             name="notes"
-            placeholder="my thoughts for today"
+            placeholder="Add your notes here"
           ></textarea>
           <button type="submit" className="submit__btn">
-            done
+            add mood
           </button>
         </form>
       </section>

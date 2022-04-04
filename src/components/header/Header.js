@@ -9,12 +9,12 @@ function Header() {
         </a>
         <ul className="nav__list">
           <li>
-            <a className=" nav__item nav__track-mood" href="/">
-              about
+            <a className=" nav__item nav__track-mood" href="/how-to-use">
+              how to use
             </a>
           </li>
           <li>
-            <a className=" nav__item nav__track-mood" href="/">
+            <a className=" nav__item nav__track-mood" href="/track-mood">
               track mood
             </a>
           </li>

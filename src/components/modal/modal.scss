@@ -55,8 +55,13 @@ body.active-modal {
 
 .modal__title {
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 43px;
   text-align: center;
+  font-size: 17px;
+
+  &--second {
+    margin-bottom: 10px;
+  }
 }
 
 .form-radio__wrapper {
@@ -70,6 +75,15 @@ body.active-modal {
   resize: none;
   width: 100%;
   font-family: inherit;
+  height: 87px;
+  outline: none;
+  border: 1px solid black; // 2px
+}
+
+.modal__notes:focus:focus-visible {
+  outline: none;
+  border: 0.125rem solid black; // 2px
+  box-shadow: 0px 0.125rem 0.313rem rgba(19, 24, 44, 0.1);
 }
 
 .input__radio {
@@ -82,44 +96,160 @@ body.active-modal {
     padding-left: 0;
   }
 
-  &--sad::before {
-    content: "";
-    background-image: url("../../assets/images/drained.svg");
-    background-repeat: no-repeat;
-    position: absolute;
-    overflow: hidden;
-    top: -61px;
-    left: 3px;
-    width: 48px;
-    height: 48px;
-    // border: 1.5px solid red;
-    // border-radius: 50%;
-  }
-
   &--happy::before {
     content: "";
-    background-image: url("../../assets/images/drained.svg");
+    background-image: url("../../assets/icons/Happy_1.svg");
     background-repeat: no-repeat;
     position: absolute;
-    top: -61px;
-    left: 3px;
+    top: -56px;
+    left: 17px;
     width: 48px;
     height: 48px;
     overflow: hidden;
-    // border: 1.5px solid red;
-    // border-radius: 50%;
   }
+
+  &--sad::before {
+    content: "";
+    background-image: url("../../assets/icons/Sad_1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    left: 12px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &--frustrated::before {
+    content: "";
+    background-image: url("../../assets/icons/frustrated_1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    left: 30px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &--tired::before {
+    content: "";
+    background-image: url("../../assets/icons/Tired_1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    left: 12px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &--drained::before {
+    content: "";
+    background-image: url("../../assets/icons/drained_1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    left: 19px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.input__radio--happy:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/icons/Happy_2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -58px;
+  left: 16px;
+  width: 70px;
+  height: 70px;
 }
 
 .input__radio--sad:checked::after {
   content: "";
   overflow: hidden;
-  background-image: url("../../assets/images/drained2.svg");
+  background-image: url("../../assets/icons/Sad_2_svg.svg");
   background-repeat: no-repeat;
   position: absolute;
-  top: -61px;
-  left: 3px;
+  top: -58px;
+  left: 9px;
   width: 70px;
   height: 70px;
-  border-radius: 50%;
+}
+
+.input__radio--frustrated:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/icons/frustrated_2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -58px;
+  left: 28px;
+  width: 70px;
+  height: 70px;
+}
+
+.input__radio--tired:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/icons/Tired_2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -58px;
+  left: 8px;
+  width: 70px;
+  height: 70px;
+}
+
+.input__radio--drained:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/icons/drained_2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -58px;
+  left: 17px;
+  width: 70px;
+  height: 70px;
+}
+
+// .submit__btn {
+//   background-color: black;
+//   color: white;
+//   border: none;
+//   padding: 10px 10px;
+//   width: 100%;
+// }
+
+.submit__btn {
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  margin-top: 10px;
+}
+.submit__btn:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+@media (min-width: 768px) {
+  .submit__btn {
+    padding: 0.25em 0.75em;
+  }
 }

@@ -15,7 +15,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/" exact component={Main} />
           <Route
-            path="/about"
+            path="/how-to-use"
             exact
             render={(renderProps) => <About {...renderProps} />}
           />

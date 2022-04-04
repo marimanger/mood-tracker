@@ -6,6 +6,7 @@ import ShowData from "../../components/showdata/ShowData";
 import Hello from "../../components/hello/Hello";
 import axios from "axios";
 import moment from "moment";
+import AOS from "aos";
 
 import "react-calendar/dist/Calendar.css";
 import "../about/about.scss";
@@ -107,7 +108,7 @@ function TrackMood() {
   // EDIT DATA/////////////
 
   const handleSubmitEditMood = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const request = {
       moodName: showForm.moodName,
       note: showForm.note,
@@ -215,7 +216,7 @@ function TrackMood() {
     <>
       <Hello />
 
-      <section className="calendar__container">
+      <section className="calendar__container" data-aos="fade-up">
         <Calendar
           onClickDay={toggleModal}
           value={value}

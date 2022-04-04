@@ -1,4 +1,5 @@
 // import "../chart/chart.css";
+import { CSVLink, CSVDownload } from "react-csv";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -14,51 +15,66 @@ import { Bar } from "react-chartjs-2";
 ChartJs.register(CategoryScale, LinearScale, BarElement);
 
 function Chart() {
-
-
   const [chartData, setChartData] = React.useState([]);
   //   const [charMood, setChartmood] = useState({});
 
   const GET_MOODS = `http://localhost:8080/mood-user?userId=${123456}`;
 
   useEffect(() => {
-      const getChartData = async () => {
-         await axios.get(GET_MOODS).then((res) => {
-                setChartData(res.data);
-         }).catch((err) => { 
-             console.log(err);
-         });
+    const getChartData = async () => {
+      await axios
+        .get(GET_MOODS)
+        .then((res) => {
+          setChartData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    console.info(`Start data is ${JSON.stringify(chartData)}`);
+    getChartData();
+    console.info(`End data is ${JSON.stringify(chartData)}`);
+  }, []);
+
+  const filterDatabyDate = (data) => {
+    const newData = data.map((item) => {
+      return {
+        date: item.date,
+        mood: item.moodName,
+        note: item.note,
       };
-      console.info(`Start data is ${JSON.stringify(chartData)}`);
-      getChartData();
-      console.info(`End data is ${JSON.stringify(chartData)}`);
-  },[]);
-  
- const availableMoods = {
-     happy: 0,
-     tired: 0, 
-     frustrated: 0,
-     drained: 0,
-     sad: 0
- }
+    });
+    return newData;
+  };
+
+  const data2 = filterDatabyDate(chartData);
+
+  const availableMoods = {
+    happy: 0,
+    tired: 0,
+    frustrated: 0,
+    drained: 0,
+    sad: 0,
+  };
 
   chartData.reduce((availableMoods, mood) => {
-      const currMood = mood.moodName;
-      availableMoods[currMood]++;
-      return availableMoods;
-    }, availableMoods);
-  console.info(availableMoods)
+    const currMood = mood.moodName;
+    availableMoods[currMood]++;
+    return availableMoods;
+  }, availableMoods);
+  console.info(availableMoods);
 
   const inputData = [];
 
   for (let key of Object.keys(availableMoods)) {
-      inputData.push(availableMoods[key]);
+    inputData.push(availableMoods[key]);
   }
-  
-  let data = {
-    labels: ['happy', 'tired', 'frustrated', 'drained', 'sad'],
 
-    datasets: [{
+  let data = {
+    labels: ["happy", "tired", "frustrated", "drained", "sad"],
+
+    datasets: [
+      {
         label: "Mood",
         data: inputData,
         backgroundColor: [
@@ -84,8 +100,7 @@ function Chart() {
 
   let options = {
     maintainAspectRatio: false,
-    scales: {
-    },
+    scales: {},
     legend: {
       labels: {
         fontSize: 25,
@@ -94,7 +109,10 @@ function Chart() {
   };
   return (
     <div>
-      <Bar height={400} data={data} options={options} />
+      <section>
+        <Bar height={400} data={data} options={options} />
+      </section>
+      <CSVLink data={data2}>Download My Diary</CSVLink>
     </div>
   );
 }
