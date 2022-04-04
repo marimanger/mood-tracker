@@ -4,6 +4,7 @@ import Modal from "../../components/modal/Modal";
 import ZenQuote from "../../components/zenQuote/ZenQuote";
 import ShowData from "../../components/showdata/ShowData";
 import Hello from "../../components/hello/Hello";
+import Card from "../../components/card/Card";
 import axios from "axios";
 import moment from "moment";
 import AOS from "aos";
@@ -17,6 +18,8 @@ function TrackMood() {
   const [modal, setModal] = useState(false);
   const [moodItemPresent, setMoodItemPresent] = useState(false);
 
+  const [cardDataedit, setCardDataEdit] = useState(false);
+
   const [showForm, setEditForm] = useState({
     id: "",
     moodName: "",
@@ -29,9 +32,23 @@ function TrackMood() {
     date: "",
   });
 
-  const handleCloseModal = (e) => {
-    setModal(false);
+  //GET ALL MOODS ///////////////////////////
+
+  const [moodlist, setMoodlist] = React.useState([]);
+  const GET_MOODS = `http://localhost:8080/mood-user?userId=${123456}`;
+  const getMoodData = async () => {
+    try {
+      const response = await axios.get(GET_MOODS);
+      console.log(response.data);
+      setMoodlist(response.data);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
+
+  useEffect(() => {
+    getMoodData();
+  }, []);
 
   //Modal window for form//////////////////
 
@@ -52,6 +69,11 @@ function TrackMood() {
     }
   };
 
+  const handleCloseModal = (e) => {
+    setModal(false);
+    setCardDataEdit(false);
+  };
+
   const moodValueChange = (event) => {
     console.log(`Current mood is: ${formValue.moodName}`);
     setFormValue({
@@ -62,25 +84,19 @@ function TrackMood() {
   };
 
   const moodEditValueChange = (event) => {
-    console.log(`Edit mood is: ${event.target.value}`);
     setEditForm({
       moodName: event.target.value,
       note: showForm.note,
       id: showForm.id,
-    });
+    })
   };
 
   const moodEditNoteChange = (event) => {
-    console.log(
-      `Edit mood note is: ${event.target.value}, show form is ${JSON.stringify(
-        showForm
-      )}`
-    );
     setEditForm({
       moodName: showForm.moodName,
       note: event.target.value,
       id: showForm.id,
-    });
+    })
   };
 
   // POST DATA/////////////
@@ -105,7 +121,17 @@ function TrackMood() {
     }
   };
 
-  // EDIT DATA/////////////
+  //EDIT DATA Function adding in existing data/////////////
+
+  const handleEdit = (event) => {
+    // console.log("Checking event on click", event);
+    setCardDataEdit(true);
+    setCardDataEdit({
+      moodName: event.moodName,
+      note: event.note,
+      id: event.id,
+    });
+  };
 
   const handleSubmitEditMood = async (event) => {
     // event.preventDefault();
@@ -125,6 +151,7 @@ function TrackMood() {
       console.error(error);
     }
   };
+
   //RADIO BUTTONS //////
 
   const handleMoodNotesChange = (event) => {
@@ -150,24 +177,6 @@ function TrackMood() {
       return false;
     }
   };
-
-  //GET ALL MOODS ///////////////////////////
-
-  const [moodlist, setMoodlist] = React.useState([]);
-  const GET_MOODS = `http://localhost:8080/mood-user?userId=${123456}`;
-  const getMoodData = async () => {
-    try {
-      const response = await axios.get(GET_MOODS);
-      console.log(response.data);
-      setMoodlist(response.data);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  useEffect(() => {
-    getMoodData();
-  }, []);
 
   //TITLE CONTENT TO FILL EACH Calendar field////////////
 
@@ -196,17 +205,13 @@ function TrackMood() {
     );
   } else {
     modalPopup = (
-      <ShowData
-        toggleModal={toggleModal}
-        handleSubmit={handleSubmitEditMood}
-        formValue={formValue}
-        moodEditNoteChange={moodEditNoteChange}
-        moodEditValueChange={moodEditValueChange}
-        handleCloseModal={handleCloseModal}
-        notes={showForm.note}
-        moodSelection={showForm.moodName}
-        currectMood={showForm.moodName}
-      />
+      <>
+        <Card
+          mood={showForm.moodName}
+          notes={showForm.note}
+          edit={handleEdit}
+        />
+      </>
     );
   }
 
@@ -224,10 +229,23 @@ function TrackMood() {
           // tileContent={tileContent}
           tileClassName={tileContent}
         />
+        {modal && modalPopup}
       </section>
       <section className="chart__wrapper"></section>
       <ZenQuote />
-      {modal && modalPopup}
+      {cardDataedit && (
+        <ShowData
+          toggleModal={toggleModal}
+          handleSubmit={handleSubmitEditMood}
+          formValue={formValue}
+          moodEditNoteChange={moodEditNoteChange}
+          moodEditValueChange={moodEditValueChange}
+          handleCloseModal={handleCloseModal}
+          notes={showForm.note}
+          moodSelection={showForm.moodName}
+          currectMood={showForm.moodName}
+        />
+      )}
     </>
   );
 }

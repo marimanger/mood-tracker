@@ -39,13 +39,12 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  // border-top-right-radius: 30px;
   border-top-left-radius: 30%;
-  // border-bottom-right-radius: 30%;
-
+  flex-direction: column;
   margin-top: 30px;
   padding-top: 20px;
   padding-bottom: 30px;
+  align-items: center;
 }
 //BG Calendar Colour
 .sad {

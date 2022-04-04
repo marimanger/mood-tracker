@@ -12,7 +12,7 @@ function ZenQuote() {
   const getQuote = async () => {
     try {
       const response = await axios.get(GET_QUOTES);
-      console.log("Quotes data", response.data);
+      // console.log("Quotes data", response.data);
       getOnequoteRandom(response.data);
     } catch (error) {
       console.log("error", error);
