@@ -112,7 +112,12 @@ function Chart() {
       <section>
         <Bar height={400} data={data} options={options} />
       </section>
-      <CSVLink data={data2}>Download My Diary</CSVLink>
+      <div>
+        <h2 className="header__download">Get your data in CSV file:</h2>
+        <CSVLink className="link__diary" data={data2}>
+          Download My Diary
+        </CSVLink>
+      </div>
     </div>
   );
 }

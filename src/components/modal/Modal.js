@@ -15,7 +15,9 @@ function Modal({
         <h1 className="modal__title">What is your mood today?</h1>
         <form className="form__modal" onSubmit={handleSubmit}>
           <div className="form-radio__wrapper">
+            <label htmlFor="happy">Happy</label>
             <input
+              id="happy"
               className=" input__radio input__radio--happy"
               type="radio"
               name="mood"
@@ -24,8 +26,9 @@ function Modal({
               defaultChecked={currectMood}
               checked={currectMood === "happy"}
             />{" "}
-            Happy{" "}
+            <label htmlFor="sad">Sad</label>
             <input
+              id="sad"
               className="input__radio input__radio--sad"
               type="radio"
               name="mood"
@@ -33,8 +36,9 @@ function Modal({
               onChange={handleMoodValueChange}
               checked={currectMood === "sad"}
             />{" "}
-            Sad{" "}
+            <label htmlFor="frustrated">Frustrated</label>
             <input
+              id="frustrated"
               className="input__radio input__radio--frustrated"
               type="radio"
               name="mood"
@@ -42,8 +46,9 @@ function Modal({
               onChange={handleMoodValueChange}
               checked={currectMood === "frustrated"}
             />{" "}
-            Frustrated{" "}
+            <label htmlFor="tired">Tired</label>
             <input
+              id="tired"
               className=" input__radio input__radio--tired"
               type="radio"
               name="mood"
@@ -51,8 +56,9 @@ function Modal({
               onChange={handleMoodValueChange}
               checked={currectMood === "tired"}
             />{" "}
-            Tired{" "}
+            <label htmlFor="drained">Drained</label>
             <input
+              id="drained"
               className="input__radio input__radio--drained"
               type="radio"
               name="mood"
@@ -60,7 +66,6 @@ function Modal({
               onChangeCapture={handleMoodValueChange}
               checked={currectMood === "drained"}
             />{" "}
-            Drained{" "}
           </div>
           <h2 className="modal__title modal__title--second">
             Add some notes<br></br>why do you feel this way?
@@ -78,9 +83,7 @@ function Modal({
           </button>
         </form>
       </section>
-      <button className="close-modal" onClick={handleCloseModal}>
-        Close
-      </button>
+      <button className="close-modal" onClick={handleCloseModal}></button>
     </div>
   );
 }
