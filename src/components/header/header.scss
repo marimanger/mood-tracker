@@ -13,6 +13,7 @@
   @include tablet {
     @include wrapper-tablet;
     margin-top: 20px;
+    margin-right: 62px;
   }
 
   @include desktop {
@@ -70,21 +71,21 @@
   }
 }
 
-// .nav__account {
-//   position: relative;
+.nav__account {
+  position: relative;
 
-//   &::after {
-//     content: "";
-//     overflow: hidden;
-//     background-image: url("../../assets/images/rs_600x600-170414124145-600.Playboy-Bunny-Renee-Zellweger-Bridget-Jones-Diary.ms.041417.jpeg");
-//     background-repeat: no-repeat;
-//     position: absolute;
-//     background-position: center;
-//     background-size: contain;
-//     top: 0;
-//     left: 8px;
-//     width: 44px;
-//     height: 44px;
-//     border-radius: 50%;
-//   }
-// }
+  &::after {
+    content: "";
+    overflow: hidden;
+    background-image: url("../../assets/images/images.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    top: -15px;
+    left: 81px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+}

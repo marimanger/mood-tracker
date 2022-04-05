@@ -220,7 +220,7 @@ function TrackMood() {
     <>
       <Hello />
 
-      <section className="calendar__container" data-aos="fade-up">
+      <section className="calendar__container">
         <Calendar
           onClickDay={toggleModal}
           value={value}

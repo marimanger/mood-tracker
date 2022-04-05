@@ -70,6 +70,7 @@
   @include tablet {
     @include wrapper-tablet;
     gap: 20px;
+    margin: 23px 36px;
     flex-direction: row;
     align-items: center;
   }
@@ -78,7 +79,12 @@
 .image__article {
   width: 50vw;
 }
-
+.button__link-hero {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* CSS */
 .button__hero {
   appearance: button;

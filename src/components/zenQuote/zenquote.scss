@@ -14,6 +14,7 @@
   padding: 20px;
   width: 100vw;
   position: relative;
+  z-index: -99999;
 
   &::before {
     content: "";

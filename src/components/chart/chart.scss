@@ -1,0 +1,20 @@
+@use "../../styles/variables" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+
+.link__diary {
+  background-color: black;
+  padding: 6px 15px;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}
+
+.header__download {
+  margin: 10px 0;
+  margin-bottom: 20px;
+}
