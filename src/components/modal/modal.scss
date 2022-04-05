@@ -38,7 +38,7 @@ body.active-modal {
   padding: 36px 28px;
   border-radius: 3px;
   max-width: 600px;
-  min-width: 336px;
+  width: 378px;
 }
 
 .close-modal {
@@ -68,6 +68,7 @@ body.active-modal {
   display: flex;
   align-items: center;
   margin: 20px 0;
+  justify-content: space-between;
 }
 
 .modal__notes {
@@ -89,20 +90,20 @@ body.active-modal {
 .input__radio {
   position: relative;
   appearance: none;
-  padding-left: 15px;
+  // padding-left: 15px;
   text-align: center;
 
-  &:nth-first-child() {
-    padding-left: 0;
-  }
+  // &:nth-first-child() {
+  //   padding-left: 0;
+  // }
 
   &--happy::before {
     content: "";
-    background-image: url("../../assets/icons/Happy_1.svg");
+    background-image: url("../../assets/images/emojis/Grinning\ face\ 1.svg");
     background-repeat: no-repeat;
     position: absolute;
     top: -56px;
-    left: 17px;
+    right: 2px;
     width: 48px;
     height: 48px;
     overflow: hidden;
@@ -110,73 +111,83 @@ body.active-modal {
 
   &--sad::before {
     content: "";
-    background-image: url("../../assets/icons/Sad_1.svg");
+    background-image: url("../../assets/images/emojis/Neutral\ face\ 1.svg");
     background-repeat: no-repeat;
     position: absolute;
     overflow: hidden;
     top: -56px;
-    left: 12px;
+    right: -7px;
     width: 48px;
     height: 48px;
   }
 
   &--frustrated::before {
     content: "";
-    background-image: url("../../assets/icons/frustrated_1.svg");
+    background-image: url("../../assets/images/emojis/Downcast\ face\ with\ sweat\ 1.svg");
     background-repeat: no-repeat;
     position: absolute;
     overflow: hidden;
     top: -56px;
-    left: 30px;
+    right: 13px;
     width: 48px;
     height: 48px;
   }
 
   &--tired::before {
     content: "";
-    background-image: url("../../assets/icons/Tired_1.svg");
+    background-image: url("../../assets/images/emojis/Pensive\ face\ 1.svg");
     background-repeat: no-repeat;
     position: absolute;
     overflow: hidden;
     top: -56px;
-    left: 12px;
+    right: 1px;
     width: 48px;
     height: 48px;
   }
 
   &--drained::before {
     content: "";
-    background-image: url("../../assets/icons/drained_1.svg");
+    background-image: url("../../assets/images/emojis/Frowning\ face\ 1.svg");
     background-repeat: no-repeat;
     position: absolute;
     overflow: hidden;
     top: -56px;
-    left: 19px;
+    right: 9px;
     width: 48px;
     height: 48px;
   }
 }
 
+label {
+  display: flex;
+  font-size: 13px;
+}
+// .input__radio:checked + label {
+//   font-weight: 600;
+//   font-size: 13px;
+// }
+
 .input__radio--happy:checked::after {
   content: "";
   overflow: hidden;
-  background-image: url("../../assets/icons/Happy_2.svg");
+  background-image: url("../../assets/images/emojis/Bigger/Grinning\ face\ 2.svg");
   background-repeat: no-repeat;
   position: absolute;
-  top: -58px;
-  left: 16px;
   width: 70px;
   height: 70px;
+  top: -61px;
+  right: -13px;
 }
 
 .input__radio--sad:checked::after {
+  font-size: 10px;
   content: "";
   overflow: hidden;
-  background-image: url("../../assets/icons/Sad_2_svg.svg");
+  background-image: url("../../assets/images/emojis/Bigger/Neutral\ face\ 2.svg");
   background-repeat: no-repeat;
   position: absolute;
-  top: -58px;
-  left: 9px;
+  top: -66px;
+  right: -23px;
   width: 70px;
   height: 70px;
 }
@@ -184,11 +195,11 @@ body.active-modal {
 .input__radio--frustrated:checked::after {
   content: "";
   overflow: hidden;
-  background-image: url("../../assets/icons/frustrated_2.svg");
+  background-image: url("../../assets/images/emojis/Bigger/Downcast\ face\ with\ sweat\ 2.svg");
   background-repeat: no-repeat;
   position: absolute;
-  top: -58px;
-  left: 28px;
+  top: -64px;
+  right: -3px;
   width: 70px;
   height: 70px;
 }
@@ -196,11 +207,11 @@ body.active-modal {
 .input__radio--tired:checked::after {
   content: "";
   overflow: hidden;
-  background-image: url("../../assets/icons/Tired_2.svg");
+  background-image: url("../../assets/images/emojis/Bigger/Pensive\ face\ 2.svg");
   background-repeat: no-repeat;
   position: absolute;
-  top: -58px;
-  left: 8px;
+  top: -65px;
+  right: -15px;
   width: 70px;
   height: 70px;
 }
@@ -208,11 +219,11 @@ body.active-modal {
 .input__radio--drained:checked::after {
   content: "";
   overflow: hidden;
-  background-image: url("../../assets/icons/drained_2.svg");
+  background-image: url("../../assets/images/emojis/Bigger/Frowning\ face\ 2.svg");
   background-repeat: no-repeat;
   position: absolute;
-  top: -58px;
-  left: 17px;
+  top: -64px;
+  right: -8px;
   width: 70px;
   height: 70px;
 }

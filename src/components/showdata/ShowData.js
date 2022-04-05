@@ -19,11 +19,13 @@ function ShowData({
         </h1>
         <p className="show-content__paragraph">
           {" "}
-          {`My mood selection ${moodSelection}`}{" "}
+          {`My mood selection is ${moodSelection}`}{" "}
         </p>
         <form onSubmit={handleSubmit} className="form">
           <div className="form-radio__wrapper showdata__wrapper">
+            <label htmlFor="happy">Happy</label>
             <input
+              id="happy"
               className="input__radio input__radio--happy"
               type="radio"
               name="mood"
@@ -32,8 +34,9 @@ function ShowData({
               defaultChecked={currectMood}
               checked={currectMood === "happy"}
             />{" "}
-            Happy{" "}
+            <label htmlFor="sad">Sad</label>
             <input
+              id="sad"
               className="input__radio input__radio--sad"
               type="radio"
               name="mood"
@@ -41,8 +44,9 @@ function ShowData({
               onChange={moodEditValueChange}
               checked={currectMood === "sad"}
             />{" "}
-            Sad{" "}
+            <label htmlFor="frustrated">Frustrated</label>
             <input
+              id="frustrated"
               className="input__radio input__radio--frustrated"
               type="radio"
               name="mood"
@@ -50,8 +54,9 @@ function ShowData({
               onChange={moodEditValueChange}
               checked={currectMood === "frustrated"}
             />{" "}
-            Frustrated{" "}
+            <label htmlFor="tired">Tired</label>
             <input
+              id="tired"
               className=" input__radio input__radio--tired"
               type="radio"
               name="mood"
@@ -59,8 +64,9 @@ function ShowData({
               onChange={moodEditValueChange}
               checked={currectMood === "tired"}
             />{" "}
-            Tired{" "}
+            <label htmlFor="drained">Drained</label>
             <input
+              id="drained"
               className="input__radio input__radio--drained"
               type="radio"
               name="mood"
@@ -68,7 +74,6 @@ function ShowData({
               onChange={moodEditValueChange}
               checked={currectMood === "drained"}
             />{" "}
-            Drained{" "}
           </div>
           <textarea
             className="modal__notes"

@@ -21,7 +21,7 @@ function Header() {
           </li>
           <li>
             <a className="nav__item nav__account" href="/account">
-              account
+              my account
             </a>
           </li>
         </ul>

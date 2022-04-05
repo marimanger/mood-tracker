@@ -107,13 +107,13 @@ function TrackMood() {
       note: formValue.notes,
       date: formValue.date,
     };
-    // console.info(`Request data is ${JSON.stringify(request)}`);
+    console.info(`Request data is ${JSON.stringify(request)}`);
     try {
       const res = await axios.post(
         `http://localhost:8080/mood-user?userId=${123456}`,
         request
       );
-      // console.log(`Response from server: ${JSON.stringify(res)}`);
+      console.log(`Response from server: ${JSON.stringify(res)}`);
       getMoodData();
     } catch (error) {
       console.error(error);
@@ -230,6 +230,7 @@ function TrackMood() {
         />
         {modal && modalPopup}
       </section>
+
       <section className="chart__wrapper"></section>
       <ZenQuote />
       {cardDataedit && (
