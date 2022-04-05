@@ -1,8 +1,8 @@
-import "../about/about.scss";
+import "./account.scss";
 import "../../components/chart/chart.scss";
 import Chart from "../../components/chart/Chart";
 
-function About() {
+function Account() {
   return (
     <>
       <Chart />
@@ -10,4 +10,4 @@ function About() {
   );
 }
 
-export default About;
+export default Account;

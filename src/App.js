@@ -4,7 +4,7 @@ import React from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Main from "./components/main/Main";
-import About from "./pages/about/About";
+import Account from "./pages/account/Account";
 import TrackMood from "./pages/trackMood/TrackMood";
 
 class App extends React.Component {
@@ -15,9 +15,9 @@ class App extends React.Component {
         <Switch>
           <Route path="/" exact component={Main} />
           <Route
-            path="/how-to-use"
+            path="/account"
             exact
-            render={(renderProps) => <About {...renderProps} />}
+            render={(renderProps) => <Account {...renderProps} />}
           />
           <Route
             path="/track-mood"

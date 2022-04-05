@@ -10,7 +10,6 @@ import moment from "moment";
 import AOS from "aos";
 
 import "react-calendar/dist/Calendar.css";
-import "../about/about.scss";
 import "../trackMood/trackMood.scss";
 
 function TrackMood() {
@@ -88,7 +87,7 @@ function TrackMood() {
       moodName: event.target.value,
       note: showForm.note,
       id: showForm.id,
-    })
+    });
   };
 
   const moodEditNoteChange = (event) => {
@@ -96,7 +95,7 @@ function TrackMood() {
       moodName: showForm.moodName,
       note: event.target.value,
       id: showForm.id,
-    })
+    });
   };
 
   // POST DATA/////////////
