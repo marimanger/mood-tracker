@@ -15,10 +15,14 @@
   line-height: 1.125em;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   padding-bottom: 5px;
+
+  @include tablet {
+    width: 58vw;
+  }
   // background-color: white;
 }
 
-.reaact-calendar__navigation {
+.react-calendar__navigation {
   justify-content: center;
 }
 

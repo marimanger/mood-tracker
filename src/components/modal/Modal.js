@@ -83,9 +83,7 @@ function Modal({
           </button>
         </form>
       </section>
-      <button className="close-modal" onClick={handleCloseModal}>
-        Close
-      </button>
+      <button className="close-modal" onClick={handleCloseModal}></button>
     </div>
   );
 }
