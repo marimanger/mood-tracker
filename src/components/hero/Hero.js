@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import addMood from "../../assets/images/addmood.jpg";
 import history from "../../assets/images/history.jpg";
 import stats from "../../assets/images/stats.jpg";
-
+import Animation from "../lottieAnimation/Animation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
@@ -16,7 +16,9 @@ function Hero() {
 
   return (
     <div className="hero__container">
-      <div className="img__hero"></div>
+      <div className="img__hero">
+        <Animation className="animation"></Animation>
+      </div>
       <section className="hero__wrapper">
         <h1 className="hero__subtitle">
           Your <span className="mood__emphasise">mood</span> changes throughout
