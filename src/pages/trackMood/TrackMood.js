@@ -228,6 +228,18 @@ function TrackMood() {
           // tileContent={tileContent}
           tileClassName={tileContent}
         />
+        <div className="mood__colours">
+          <button className="colour colour--happy"></button>
+          <p className="colour__name">- happy</p>
+          <button className="colour colour--sad"></button>
+          <p className="colour__name">- sad</p>
+          <button className="colour colour--frustrated"></button>
+          <p className="colour__name">- frustrated</p>
+          <button className="colour colour--tired"></button>
+          <p className="colour__name">- tired</p>
+          <button className="colour colour--drained"></button>
+          <p className="colour__name">- drained</p>
+        </div>
         {modal && modalPopup}
       </section>
 

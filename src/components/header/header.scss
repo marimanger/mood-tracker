@@ -17,7 +17,7 @@
   }
 
   @include desktop {
-    @include wrapper-desktop;
+    // @include wrapper-desktop;
     margin-top: 20px;
   }
 }
@@ -45,8 +45,8 @@
 }
 
 .nav-img__logo {
-  width: 48px;
-  height: 70px;
+  width: 63px;
+  height: 75px;
 
   &:hover {
     color: #a678ff;
