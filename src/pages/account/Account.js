@@ -16,7 +16,7 @@ function Account() {
             <p className="profile__text">Manage profile settings</p>
             <div className="text__wrapper">
               <p className="title__name">First Name </p>
-              <p className="name"> Bridgit </p>
+              <p className="name"> Bridget </p>
             </div>
             <div className="text__wrapper">
               <p className="title__name">Last Name </p>
