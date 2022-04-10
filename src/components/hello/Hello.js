@@ -1,5 +1,3 @@
-
-
 import "../hello/hello.scss";
 
 function Hello() {
@@ -7,7 +5,7 @@ function Hello() {
     <div>
       <section className="hello__section">
         <h1 className="hello-header__section">
-          Hi Bridgit 👋 How was your day today?
+          Hi Bridget 👋 How was your day today?
         </h1>
       </section>
     </div>
