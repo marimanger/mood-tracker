@@ -1,9 +1,10 @@
-# Getting Started with Create React App
+# mood tracker client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Diploma Developer Final Capstone Project
 
-## Available Scripts
+## Team
 
+- Mariia Bondarenko - marimanger
 In the project directory, you can run:
 
 ### `npm start`
