@@ -1,0 +1,91 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include wrapper-mobile;
+  margin-top: 20px;
+
+  @include tablet {
+    @include wrapper-tablet;
+    margin-top: 20px;
+    margin-right: 62px;
+  }
+
+  @include desktop {
+    // @include wrapper-desktop;
+    margin-top: 20px;
+  }
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__item {
+  padding-right: 25px;
+  font-size: 13px;
+  font-weight: 500;
+  &:hover {
+    color: #a678ff;
+    transition: color 0.5s ease;
+  }
+}
+.nav__logo {
+  font-size: 16px;
+
+  &:hover {
+    color: #a678ff;
+    transition: color 0.5s ease;
+  }
+}
+
+.nav-img__logo {
+  width: 63px;
+  height: 75px;
+
+  &:hover {
+    color: #a678ff;
+    fill: red;
+    transition: color 0.5s ease;
+  }
+}
+
+.hero__header {
+  @include wrapper-mobile;
+  font-size: 60px;
+  color: #2e07a3;
+  margin: 0 40px;
+  font-weight: 400;
+
+  @include tablet {
+    @include wrapper-tablet;
+  }
+
+  @include desktop {
+    @include wrapper-desktop;
+  }
+}
+
+.nav__account {
+  position: relative;
+
+  &::after {
+    content: "";
+    overflow: hidden;
+    background-image: url("../../assets/images/images.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    top: -15px;
+    left: 81px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,18 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.showdata__wrapper {
+  margin: 20px 0;
+}
+
+.header__show-content {
+  margin-bottom: 20px;
+}
+
+.show-content__paragraph {
+  margin-bottom: 66px;
+  font-size: 15px;
+  font-weight: 500;
+}

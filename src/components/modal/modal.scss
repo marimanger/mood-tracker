@@ -1,0 +1,279 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #ffffff;
+  padding: 36px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  width: 378px;
+}
+
+.close-modal {
+  position: fixed;
+  top: 144px;
+  right: 364px;
+  border: none;
+  background: none;
+
+  &:before {
+    content: "";
+    background-image: url("../../assets/icons/close.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -30px;
+    right: 46px;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.modal__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__title {
+  font-weight: 600;
+  margin-bottom: 43px;
+  text-align: center;
+  font-size: 17px;
+
+  &--second {
+    margin-bottom: 10px;
+  }
+}
+
+.form-radio__wrapper {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  justify-content: space-between;
+}
+
+.modal__notes {
+  overflow: hidden;
+  resize: none;
+  width: 100%;
+  font-family: inherit;
+  height: 87px;
+  outline: none;
+  border: 1px solid black; // 2px
+}
+
+.modal__notes:focus:focus-visible {
+  outline: none;
+  border: 0.125rem solid black; // 2px
+  box-shadow: 0px 0.125rem 0.313rem rgba(19, 24, 44, 0.1);
+}
+
+.input__radio {
+  position: relative;
+  appearance: none;
+  // padding-left: 15px;
+  text-align: center;
+
+  // &:nth-first-child() {
+  //   padding-left: 0;
+  // }
+
+  &--happy::before {
+    content: "";
+    background-image: url("../../assets/images/emojis/Grinning\ face\ 1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -56px;
+    right: 2px;
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+  }
+
+  &--sad::before {
+    content: "";
+    background-image: url("../../assets/images/emojis/Neutral\ face\ 1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    right: -7px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &--frustrated::before {
+    content: "";
+    background-image: url("../../assets/images/emojis/Downcast\ face\ with\ sweat\ 1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    right: 13px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &--tired::before {
+    content: "";
+    background-image: url("../../assets/images/emojis/Pensive\ face\ 1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    right: 1px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &--drained::before {
+    content: "";
+    background-image: url("../../assets/images/emojis/Frowning\ face\ 1.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -56px;
+    right: 9px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+label {
+  display: flex;
+  font-size: 13px;
+}
+// .input__radio:checked + label {
+//   font-weight: 600;
+//   font-size: 13px;
+// }
+
+.input__radio--happy:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/images/emojis/Bigger/Grinning\ face\ 2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: -61px;
+  right: -13px;
+}
+
+.input__radio--sad:checked::after {
+  font-size: 10px;
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/images/emojis/Bigger/Neutral\ face\ 2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -66px;
+  right: -23px;
+  width: 70px;
+  height: 70px;
+}
+
+.input__radio--frustrated:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/images/emojis/Bigger/Downcast\ face\ with\ sweat\ 2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -64px;
+  right: -3px;
+  width: 70px;
+  height: 70px;
+}
+
+.input__radio--tired:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/images/emojis/Bigger/Pensive\ face\ 2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -65px;
+  right: -15px;
+  width: 70px;
+  height: 70px;
+}
+
+.input__radio--drained:checked::after {
+  content: "";
+  overflow: hidden;
+  background-image: url("../../assets/images/emojis/Bigger/Frowning\ face\ 2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -64px;
+  right: -8px;
+  width: 70px;
+  height: 70px;
+}
+
+// .submit__btn {
+//   background-color: black;
+//   color: white;
+//   border: none;
+//   padding: 10px 10px;
+//   width: 100%;
+// }
+
+.submit__btn {
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  margin-top: 10px;
+}
+.submit__btn:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+@media (min-width: 768px) {
+  .submit__btn {
+    padding: 0.25em 0.75em;
+  }
+}

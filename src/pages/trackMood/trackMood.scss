@@ -1,0 +1,133 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+//HELLO SECTION
+
+.react-calendar {
+  width: 80vw;
+  max-width: 100%;
+  text-align: center;
+  border: none;
+  background: none;
+  font-family: "Avenir Next", "Arial", sans-serif;
+  line-height: 1.125em;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  padding-bottom: 5px;
+
+  @include tablet {
+    width: 58vw;
+  }
+  // background-color: white;
+}
+
+.react-calendar__navigation {
+  justify-content: center;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.75em;
+  text-decoration: none;
+}
+
+.display__none {
+  display: none;
+}
+
+.calendar__container {
+  background: white;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  border-top-left-radius: 30%;
+  flex-direction: column;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  align-items: center;
+}
+//BG Calendar Colour
+.sad {
+  background-color: #fffce3;
+}
+
+.happy {
+  background-color: #dafbd0;
+}
+
+.frustrated {
+  background-color: #b2b2f8;
+}
+
+.tired {
+  background-color: #fae0e4;
+}
+
+.drained {
+  background-color: salmon;
+}
+
+//Calendar
+.react-calendar__month-view__days__day--weekend {
+  color: #131212;
+}
+
+.react-calendar__tile--active {
+  // background: ;
+  opacity: 0.5;
+  color: black;
+  font-weight: 600;
+  border: 1px solid black;
+}
+
+.react-calendar__navigation__label {
+  flex-grow: 0;
+}
+
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: none;
+  }
+}
+
+.mood__colours {
+  display: flex;
+  margin-top: 20px;
+}
+
+.colour__name {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.colour {
+  width: 6px;
+  height: 3px;
+  border: none;
+  background: #dafbd0;
+  padding: 10px 23px;
+
+  &--sad {
+    background: #fffce3;
+  }
+
+  &--frustrated {
+    background: #b2b2f8;
+  }
+  &--tired {
+    background: #fae0e4;
+  }
+  &--drained {
+    background: #fa8072;
+  }
+}

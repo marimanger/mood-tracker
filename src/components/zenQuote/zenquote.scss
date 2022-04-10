@@ -1,0 +1,55 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.quote__wrapper {
+  margin: 20px auto;
+  max-width: 368px;
+}
+.quote__section {
+  @include wrapper-mobile;
+  margin: 30px 0;
+  background-color: white;
+  padding: 20px;
+  width: 100vw;
+  position: relative;
+  z-index: -99999;
+
+  &::before {
+    content: "";
+    background-image: url("../../assets/icons/quotes_icon-icons.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    overflow: hidden;
+    top: -9px;
+    left: 238px;
+    width: 100px;
+    height: 100px;
+  }
+  //   box-shadow: #e0e21e40 0px 7px 29px 0px;
+}
+
+.quote__header {
+  text-align: center;
+  margin: 0 30px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.quote__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote__text {
+  font-size: 17px;
+  font-style: italic;
+  padding: 12px 0;
+  border-top: 2px solid #fffce3;
+}
+.quote__author {
+  text-align: left;
+  align-self: flex-end;
+  margin: 0 25px;
+}

@@ -1,0 +1,11 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  height: 40px;
+}

@@ -1,0 +1,73 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/variables" as *;
+
+.account__container {
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+  }
+}
+
+.account__wrap-head {
+  @include wrapper-mobile;
+
+  @include tablet {
+    @include wrapper-tablet;
+    margin-bottom: 25px;
+    margin-top: 25px;
+  }
+}
+
+.account__header {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.account__descr {
+  font-size: 15px;
+}
+
+.profile__settings {
+  width: 50vw;
+  background-color: white;
+  margin-top: 10px;
+  display: flex;
+  border-radius: 20px;
+  padding: 21px 49px;
+  margin: 0 25px;
+  margin-right: 36px;
+  justify-content: center;
+  box-shadow: rgb(0 0 0 / 10%) 0px 10px 15px -3px,
+    rgb(0 0 0 / 5%) 0px 4px 6px -2px;
+}
+
+.profile__header {
+  margin-top: 10px;
+}
+
+.text__wrapper {
+  display: flex;
+  width: 30vw;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.profile__text {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.title__name {
+  font-weight: 600;
+}
+
+.statistics__section {
+  width: 50vw;
+}
