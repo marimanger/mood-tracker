@@ -34,7 +34,7 @@ function Hero() {
           <article data-aos="fade-up">
             <img className="image__article" src={addMood}></img>
           </article>
-          <article className="how-to__article" data-aos="fade-up">
+          <article id="how-to"className="how-to__article" data-aos="fade-up">
             <h1 className="hero__article-title">Add your mood to calendar</h1>
             <p>
               It's super easy to add your mood to the calendar with just few
